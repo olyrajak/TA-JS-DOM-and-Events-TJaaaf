@@ -1,0 +1,121 @@
+html {
+    font-size: 16px;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+body {
+    background: #f2f4f8;
+    font-family: "Montserrat", sans-serif;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+h1 {
+    padding: 2rem;
+    text-align: center;
+    background-color: #8ef5d6;
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+    text-decoration: underline;
+    margin-bottom: 2rem;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.game {
+    width: 550px;
+    height: 590px;
+    margin: 0 auto;
+    margin-top: 4px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px 8px rgb(2, 114, 77);
+    background-color: rgba(248, 243, 165, 0.527);
+}
+
+.score {
+    padding: 1rem 2rem;
+    font-size: 28px;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.board,
+.reload {
+    font-size: 50px;
+    padding: 0.5rem 2rem;
+}
+
+.board i {
+    padding: 0 2rem;
+}
+
+.user-rock,
+.comp-rock {
+    margin-left: 4rem;
+}
+
+.reload {
+    padding-left: 2rem;
+    margin-top: 1rem;
+}
+
+.user-game {
+    color: #065a14;
+}
+
+.comp-game {
+    color: rgb(75, 5, 65);
+}
+
+h2 {
+    font-size: 42px;
+    font-weight: 600;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+@media screen and (max-width: 992px) and (min-width: 768px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+}

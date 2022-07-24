@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Paper and Scissors</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://kit.fontawesome.com/615eec2c8f.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="game container">
+        <h1>Rock Paper and Scissor Game</h1>
+        <p class="user-score score">
+            You - <span class="count count-user">0</span
+        ><span class="selected"></span>
+        </p>
+        <div class="user-game board">
+            <!-- Rock -->
+            <i class="fa fa-hand-rock-o user-rock" aria-hidden="true"></i>
+            <!-- Paper -->
+            <i class="fa fa-hand-paper-o user-paper" aria-hidden="true"></i>
+            <!-- Scissors -->
+            <i class="fa fa-hand-scissors-o user-scissor" aria-hidden="true"></i>
+        </div>
+        <p class="comp-score score">
+            Computer - <span class="count count-comp">0</span
+        ><span class="selected-comp"></span>
+        </p>
+        <div class="comp-game board">
+            <!-- Rock -->
+            <i class="fa fa-hand-rock-o comp-rock" aria-hidden="true"></i>
+            <!-- Paper -->
+            <i class="fa fa-hand-paper-o comp-paper" aria-hidden="true"></i>
+            <!-- Scissors -->
+            <i class="fa fa-hand-scissors-o comp-scissor" aria-hidden="true"></i>
+        </div>
+        <i class="fa-solid fa-arrows-rotate reload"></i>
+        <h2></h2>
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>
