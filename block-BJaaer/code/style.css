@@ -50,6 +50,9 @@ body {
 
 button {
     padding: 0.5rem;
+    background-color: #657ced;
+    font-weight: bold;
+    color: black;
 }
 
 body {
