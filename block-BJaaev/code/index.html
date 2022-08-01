@@ -12,7 +12,6 @@
     <section class="todoapp">
         <header class="header">
             <h1>todos</h1>
-            <!-- <input class="new-todo" placeholder="What needs to be done?" autofocus /> -->
         </header>
         <section class="main">
             <div class="font-layout">
@@ -22,7 +21,7 @@
                         <input id="moviename" class="new-todo" type="text" name="moviename" placeholder="What needs to be done?" autofocus />
                         <small></small>
                     </div>
-                    <ul class="flex todo-list"></ul>
+                    <ul class="todo-list"></ul>
                 </form>
             </div>
 
@@ -41,13 +40,13 @@
             <span class="todo-count"></span>
             <ul class="filters">
                 <li>
-                    <a href="#/" class="selected">All</a>
+                    <a href="#" class="selected" id="all">All</a>
                 </li>
                 <li>
-                    <a href="#/active">Active</a>
+                    <a href="#" class="active" id="active">Active</a>
                 </li>
                 <li>
-                    <a href="#/completed">Completed</a>
+                    <a href="#" class="complete" id="complete">Completed</a>
                 </li>
             </ul>
             <button class="clear-completed">Clear completed</button>

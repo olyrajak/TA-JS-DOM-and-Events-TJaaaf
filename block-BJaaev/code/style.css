@@ -159,15 +159,12 @@ body {
 
 .todoapp h1 {
     position: absolute;
-    top: -155px;
+    top: -68px;
     width: 100%;
     font-size: 100px;
     font-weight: 100;
     text-align: center;
     color: rgba(175, 47, 47, 0.15);
-    -webkit-text-rendering: optimizeLegibility;
-    -moz-text-rendering: optimizeLegibility;
-    text-rendering: optimizeLegibility;
 }
 
 .new-todo,
@@ -251,15 +248,16 @@ li {
 }
 
 .checkbox {
-    height: 20px;
-    width: 20px;
+    width: 10%;
+    /* height: 20px;
+    width: 20px; */
 }
 
 
 /* border-radius: ; */
 
 span {
-    margin-left: 381px;
+    /* margin-left: 381px; */
     font-size: 20px;
     color: red;
 }
@@ -277,7 +275,8 @@ p {
 .todo-list li {
     list-style: none;
     position: relative;
-    font-size: 24px;
+    margin: 15px;
+    /* font-size: 24px; */
     border-bottom: 1px solid #ededed;
 }
 
@@ -633,4 +632,8 @@ hr {
     .learn-bar>.learn {
         left: 8px;
     }
+}
+
+.line-through {
+    text-decoration: line-through;
 }
