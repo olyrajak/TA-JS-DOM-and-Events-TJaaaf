@@ -9,7 +9,7 @@ let complete = document.getElementById("complete")
 let alltodo = [];
 
 function handler(event) {
-    alltodo = [];
+    // alltodo = [];
     event.preventDefault();
 
     let movie = event.target.value
@@ -27,7 +27,7 @@ function handler(event) {
         input.value = "";
         // ul.innerHTML = "";
 
-        showAllData();
+        showAllData(alltodo);
     }
 
 
@@ -37,10 +37,12 @@ function handler(event) {
 }
 
 
-function showAllData() {
-    // ul.innerHTML = "";
-    alltodo.forEach(todo => {
-        createUI(todo);
+function showAllData(todo_list) {
+    // console.log(todo_list);
+    ul.innerHTML = "";
+    alltodo.forEach(todo_list => {
+        createUI(todo_list);
+        // console.log(todo);
 
     });
 }
@@ -48,46 +50,84 @@ function showAllData() {
 function showActiveData() {
     // ul.innerHTML = "";
     alltodo.forEach(todo => {
-        if (todo.completed == false) createUI(todo);
+        if (todo.completed === false) createUI(todo);
+        // console.log(todo)
     });
+    // showAllData()
 }
 
 function showCompleteData() {
-    // ul.innerHTML = "";
+    ul.innerHTML = "";
     alltodo.forEach(todo => {
-
-        if (todo.completed == true) createUI(todo);
+        console.log(todo);
+        if (todo.completed === true)
+            createUI(todo);
 
     });
+    // showAllData()
 }
-all.addEventListener("click", function(e) {
-    e.preventDefault();
-    showAllData()
+// all.addEventListener("click", function(e) {
+//     e.preventDefault();
+//     showAllData()
+// });
+// active.addEventListener("click", function(e) {
+//     e.preventDefault();
+//     showActiveData()
+// });
+// complete.addEventListener("click", function(e) {
+//     e.preventDefault();
+//     showCompleteData()
+// });
+showAllData(alltodo);
+
+all.addEventListener("click", () => {
+    showAllData(alltodo);
+    defaultSelected = "all";
+    updateActiveButton();
 });
-active.addEventListener("click", function(e) {
-    e.preventDefault();
-    showAllData()
+
+// clear.addEventListener("click", () => {
+//     alltodo = alltodo.filter((todo) => !todo.completed);
+//     defaultSelected = "clear";
+//     updateActiveButton();
+//     showAllData(alltodo);
+// });
+
+active.addEventListener("click", () => {
+    let notCompleted = alltodo.filter((todo) => !todo.completed);
+    defaultSelected = "active";
+    updateActiveButton();
+    showAllData(notCompleted);
 });
-complete.addEventListener("click", function(e) {
-    e.preventDefault();
-    showAllData()
+
+complete.addEventListener("click", () => {
+    let completedArray = alltodo.filter((todo) => todo.completed);
+    defaultSelected = "completed";
+    updateActiveButton();
+    showAllData(completedArray);
 });
 
 function createUI(todo) {
-    // let movie = event.target.elements.moviename.value;
+
     let li = document.createElement("li");
     li.classList.add("flex");
     let input2 = document.createElement("input");
     input2.classList.add("checkbox");
     input2.type = "checkbox";
     input2.checked = todo.completed;
+    input2.addEventListener("click", function() {
+        todo.completed = true;
 
+        console.log(todo);
+        showAllData();
+    });
     let p = document.createElement("p");
     p.innerText = todo.name;
     let span = document.createElement("span");
     span.innerText = "X";
     span.addEventListener("click", function() {
-        let index = alltodo.indexOf(todo);
+        let index = alltodo.findIndex(t => t.name === alltodo.name);
+        // console.log(index);
         alltodo.splice(index, 1);
         showAllData();
     });
@@ -101,3 +141,23 @@ form.addEventListener("keyup", handler);
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 });
+
+function updateActiveButton(btn = defaultSelected) {
+    all.classList.remove("selected");
+    active.classList.remove("selected");
+    complete.classList.remove("selected");
+    // clear.classList.remove("selected");
+
+    if (btn === "all") {
+        all.classList.add("selected");
+    }
+    if (btn === "active") {
+        active.classList.add("selected");
+    }
+    if (btn === "complete") {
+        complete.classList.add("selected");
+    }
+    // if (btn === "clear") {
+    //     clear.classList.add("selected");
+    // }
+}
