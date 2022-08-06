@@ -637,3 +637,8 @@ hr {
 .line-through {
     text-decoration: line-through;
 }
+
+.selected {
+    background-color: #363535;
+    color: white;
+}

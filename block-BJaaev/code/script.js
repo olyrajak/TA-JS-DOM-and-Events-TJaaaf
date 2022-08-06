@@ -6,7 +6,8 @@ let input = document.querySelector(".new-todo");
 let all = document.getElementById("all")
 let active = document.getElementById("active")
 let complete = document.getElementById("complete")
-let alltodo = [];
+let clear = document.getElementById("clear")
+let alltodo = JSON.parse(localStorage.getItem("todos")) || [];
 
 function handler(event) {
     // alltodo = [];
@@ -15,17 +16,17 @@ function handler(event) {
     let movie = event.target.value
         // console.log(movie);
     if (event.keyCode === 13) {
-        let todu = {
+        let todo = {
             name: event.target.value,
             completed: false
 
         }
-        alltodo.push(todu);
+        alltodo.push(todo);
         // console.log(alltodo);
         // 
         event.target.value = "";
-        input.value = "";
-        // ul.innerHTML = "";
+        // localStorage.setItem("todo", JSON.stringify(alltodo));
+
 
         showAllData(alltodo);
     }
@@ -37,97 +38,64 @@ function handler(event) {
 }
 
 
-function showAllData(todo_list) {
-    // console.log(todo_list);
+function showAllData(todos) {
+    console.log(todos);
     ul.innerHTML = "";
-    alltodo.forEach(todo_list => {
-        createUI(todo_list);
-        // console.log(todo);
+    todos.forEach(todo => {
+        createUI(todo);
+
 
     });
 }
-
-function showActiveData() {
-    // ul.innerHTML = "";
-    alltodo.forEach(todo => {
-        if (todo.completed === false) createUI(todo);
-        // console.log(todo)
-    });
-    // showAllData()
-}
-
-function showCompleteData() {
-    ul.innerHTML = "";
-    alltodo.forEach(todo => {
-        console.log(todo);
-        if (todo.completed === true)
-            createUI(todo);
-
-    });
-    // showAllData()
-}
-// all.addEventListener("click", function(e) {
-//     e.preventDefault();
-//     showAllData()
-// });
-// active.addEventListener("click", function(e) {
-//     e.preventDefault();
-//     showActiveData()
-// });
-// complete.addEventListener("click", function(e) {
-//     e.preventDefault();
-//     showCompleteData()
-// });
-showAllData(alltodo);
-
 all.addEventListener("click", () => {
-    showAllData(alltodo);
+
     defaultSelected = "all";
     updateActiveButton();
+    showAllData(alltodo);
 });
 
-// clear.addEventListener("click", () => {
-//     alltodo = alltodo.filter((todo) => !todo.completed);
-//     defaultSelected = "clear";
-//     updateActiveButton();
-//     showAllData(alltodo);
-// });
+clear.addEventListener("click", () => {
+    let clear = alltodo.filter((todo) => todo.completed);
+    defaultSelected = "clear";
+    updateActiveButton();
+    showAllData(clear);
+});
 
 active.addEventListener("click", () => {
-    let notCompleted = alltodo.filter((todo) => !todo.completed);
+    let notCompleted = alltodo.filter((todo) => todo.completed);
+
     defaultSelected = "active";
     updateActiveButton();
+    // console.log(notCompleted);
     showAllData(notCompleted);
 });
 
 complete.addEventListener("click", () => {
-    let completedArray = alltodo.filter((todo) => todo.completed);
+    let completedArray = alltodo.filter((todo) => !todo.completed);
     defaultSelected = "completed";
     updateActiveButton();
     showAllData(completedArray);
 });
 
-function createUI(todo) {
-
+function createUI(todos) {
     let li = document.createElement("li");
     li.classList.add("flex");
     let input2 = document.createElement("input");
     input2.classList.add("checkbox");
     input2.type = "checkbox";
-    input2.checked = todo.completed;
+    input2.checked = todos.completed;
     input2.addEventListener("click", function() {
-        todo.completed = true;
 
-        console.log(todo);
-        showAllData();
+        todos.completed = true;
+
+        showAllData(alltodo);
     });
     let p = document.createElement("p");
-    p.innerText = todo.name;
+    p.innerText = todos.name;
     let span = document.createElement("span");
     span.innerText = "X";
     span.addEventListener("click", function() {
         let index = alltodo.findIndex(t => t.name === alltodo.name);
-        // console.log(index);
         alltodo.splice(index, 1);
         showAllData();
     });
@@ -146,7 +114,7 @@ function updateActiveButton(btn = defaultSelected) {
     all.classList.remove("selected");
     active.classList.remove("selected");
     complete.classList.remove("selected");
-    // clear.classList.remove("selected");
+
 
     if (btn === "all") {
         all.classList.add("selected");
@@ -157,7 +125,7 @@ function updateActiveButton(btn = defaultSelected) {
     if (btn === "complete") {
         complete.classList.add("selected");
     }
-    // if (btn === "clear") {
-    //     clear.classList.add("selected");
-    // }
+    if (btn === "clear") {
+        clear.classList.add("selected");
+    }
 }
