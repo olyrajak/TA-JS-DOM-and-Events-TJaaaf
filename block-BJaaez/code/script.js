@@ -2,7 +2,9 @@ let form = document.querySelector("form");
 let ul = document.querySelector("ul");
 
 function handler(event) {
+
     event.preventDefault();
+    
     console.log(event);
 
     let movie = event.target.elements.moviename.value;
@@ -17,5 +19,9 @@ function handler(event) {
     });
 
 }
+
+
+
+
 
 form.addEventListener("submit", handler)
